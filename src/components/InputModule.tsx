@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { v4 as uuidv4 } from "uuid";
 import { StoreContext } from "../stores/store";
 
 import TextField from "@material-ui/core/TextField";
@@ -9,15 +10,20 @@ const InputModule: React.FC = () => {
   const [loader, setLoader] = useState({});
 
   const submitLoader = () => {
-    store.addLoader(loader);
-    console.log(loader);
+    store.addLoader({
+      ...loader,
+      id: uuidv4(),
+    });
+    // console.log();
   };
 
   const setValues = (e: any) => {
     setLoader({
       ...loader,
       [e.target.name]:
-        e.target.name === "name" ? e.target.value : Number(e.target.value),
+        e.target.name === "name"
+          ? e.target.value.trim()
+          : Number(e.target.value),
     });
   };
 
