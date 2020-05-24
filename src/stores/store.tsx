@@ -8,11 +8,15 @@ interface Props {
 }
 
 export const StoreProvider: React.FC<Props> = ({ children }) => {
-  const store = useLocalStore(() => ({
-    loaders: [{}],
-    addLoader: (loader: object) => {
+  interface Store {
+    loaders: object[];
+    addLoader: (loader: object) => void;
+    // removeLoader: (i: number) => void;
+  }
+  const store = useLocalStore<Store>(() => ({
+    loaders: [],
+    addLoader: (loader) => {
       store.loaders.push(loader);
-      //   console.log("I am addLoader");
     },
     removeLoader: (i: number) => {
       store.loaders = [
