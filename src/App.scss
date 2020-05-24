@@ -1,0 +1,42 @@
+.container {
+  margin: 30px auto;
+  width: 500px;
+  .loader-wrapper {
+    padding: 10px;
+    display: flex;
+    & > .table-container {
+      flex: 4 4;
+      // border: 1px solid green;
+    }
+    & > .spinner-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex: 2 2;
+      & > span.freeze {
+        svg {
+          animation: none;
+        }
+      }
+    }
+  }
+}
+
+.table-unit {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  & > li {
+    list-style: none;
+    flex: 2 2;
+    padding: 3px;
+    // border: 1px solid red;
+  }
+  & > li:first-child {
+    flex: 4 4;
+  }
+  & > li:last-child {
+    flex: 1 1;
+  }
+}
