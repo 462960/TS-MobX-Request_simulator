@@ -5,16 +5,21 @@ import { StoreContext } from "../stores/store";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
+interface LoadUnit {
+  name?: string | undefined;
+  time?: number;
+}
+
 const InputModule: React.FC = () => {
   const store = useContext(StoreContext);
-  const [loader, setLoader] = useState({});
+  const [loader, setLoader] = useState<LoadUnit>({});
 
   const submitLoader = () => {
     store.addLoader({
       ...loader,
       id: uuidv4(),
     });
-    // console.log();
+    setLoader({});
   };
 
   const setValues = (e: any) => {
@@ -27,10 +32,17 @@ const InputModule: React.FC = () => {
     });
   };
 
+  const { name, time } = loader;
+
   return (
     <ul className="table-unit">
       <li>
-        <TextField onChange={setValues} name="name" label="Loader name" />
+        <TextField
+          onChange={setValues}
+          name="name"
+          label="Loader name"
+          value={name || ""}
+        />
       </li>
       <li>
         <TextField
@@ -38,6 +50,7 @@ const InputModule: React.FC = () => {
           name="time"
           label="Seconds"
           type="number"
+          value={time || ""}
         />
       </li>
       <li>

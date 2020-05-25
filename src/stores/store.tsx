@@ -11,14 +11,14 @@ export const StoreProvider: React.FC<Props> = ({ children }) => {
   interface Store {
     loaders: object[];
     addLoader: (loader: object) => void;
-    // removeLoader: (i: number) => void;
+    removeLoader: (i: number) => void;
   }
   const store = useLocalStore<Store>(() => ({
     loaders: [],
     addLoader: (loader) => {
       store.loaders.push(loader);
     },
-    removeLoader: (i: number) => {
+    removeLoader: (i) => {
       store.loaders = [
         ...store.loaders.slice(0, i),
         ...store.loaders.slice(i + 1),
