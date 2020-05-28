@@ -3,13 +3,14 @@ import { useLocalStore } from "mobx-react";
 
 export const StoreContext = createContext<any>(undefined);
 
-interface Props {
-  //   children: any;
-}
+type Props = {
+  children: JSX.Element | null;
+};
 
 export const StoreProvider: React.FC<Props> = ({ children }) => {
   interface Store {
-    loaders: object[];
+    loaders: Array<object>;
+    // loaders: object[];
     addLoader: (loader: object) => void;
     removeLoader: (i: number) => void;
   }

@@ -5,6 +5,7 @@ import Paper from "@material-ui/core/Paper";
 
 import InputModule from "./InputModule";
 import Loaders from "./Loaders";
+import AnimatedLoader from "./AnimatedLoader";
 
 const Container: React.FC = () => {
   return (
@@ -15,7 +16,11 @@ const Container: React.FC = () => {
             <InputModule />
             <Loaders />
           </div>
-          <div className="spinner-container"></div>
+          <div className="spinner-container">
+            <AnimatedLoader />
+            <span>Name</span>
+            <span>sec left</span>
+          </div>
         </div>
       </Paper>
     </div>

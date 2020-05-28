@@ -6,7 +6,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
 interface LoadUnit {
-  name?: string | undefined;
+  name?: string;
   time?: number;
 }
 
@@ -35,18 +35,12 @@ const InputModule: React.FC = () => {
   const { name, time } = loader;
 
   return (
-    <ul className="table-unit">
+    <ul className="table-unit" onChange={setValues}>
       <li>
-        <TextField
-          onChange={setValues}
-          name="name"
-          label="Loader name"
-          value={name || ""}
-        />
+        <TextField name="name" label="Loader name" value={name || ""} />
       </li>
       <li>
         <TextField
-          onChange={setValues}
           name="time"
           label="Seconds"
           type="number"
