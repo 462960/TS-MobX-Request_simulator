@@ -55,28 +55,14 @@
 }
 
 .loader {
-  transition: all 0.7s ease-in-out;
   border: 10px solid #ebebeb;
   border-bottom-color: #3f51b5;
 
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  // -webkit-font-smoothing: antialiased !important;
-  animation: spin 1s linear infinite;
-  // -webkit-animation: spin 1s linear infinite;
   margin-left: -11px;
   margin-top: -11px;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
 }
 
 // Start - Stop bttons

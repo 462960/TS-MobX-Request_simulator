@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
+import { StoreContext } from "../stores/store";
+
 import Button from "@material-ui/core/Button";
 
 interface Props {
@@ -7,10 +9,14 @@ interface Props {
 }
 
 const StartStop: React.FC<Props> = ({ handleStart, handleStop }) => {
+  const store = useContext(StoreContext);
+
   return (
     <ul className="start-stop">
       <li>
-        <Button onClick={handleStart}>Start</Button>
+        <Button disabled={store.loaders.length === 0} onClick={handleStart}>
+          Start
+        </Button>
         <Button onClick={handleStop}>Stop</Button>
       </li>
     </ul>
