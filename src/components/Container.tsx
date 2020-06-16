@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-// import { useObserver } from "mobx-react";
+import { useObserver } from "mobx-react";
 
 import { StoreContext } from "../stores/store";
 
@@ -46,7 +46,7 @@ const Container: React.FC = () => {
     setCurrentTime(item.time);
   };
 
-  return (
+  return useObserver(() => (
     <div className="container">
       <Paper>
         <div className="loader-wrapper">
@@ -63,7 +63,7 @@ const Container: React.FC = () => {
         </div>
       </Paper>
     </div>
-  );
+  ));
 };
 
 export default Container;
