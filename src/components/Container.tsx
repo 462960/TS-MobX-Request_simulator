@@ -31,7 +31,7 @@ const Container: React.FC = () => {
 
     const interval = setInterval(() => {
       setCurrentTime((x) => x - 1);
-      setGrad((x) => x + 30);
+      setGrad((x) => x + 35);
     }, 1000);
     setTimerID(interval);
   };
