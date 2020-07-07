@@ -7,13 +7,15 @@ type Props = {
   children: JSX.Element | null;
 };
 
+interface Store {
+  // loaders: Array<object>;
+  // Interchangable in many cases
+  loaders: object[];
+  addLoader: (loader: object) => void;
+  removeLoader: (i: number) => void;
+}
+
 export const StoreProvider: React.FC<Props> = ({ children }) => {
-  interface Store {
-    loaders: Array<object>;
-    // loaders: object[];
-    addLoader: (loader: object) => void;
-    removeLoader: (i: number) => void;
-  }
   const store = useLocalStore<Store>(() => ({
     loaders: [],
     addLoader: (loader) => {

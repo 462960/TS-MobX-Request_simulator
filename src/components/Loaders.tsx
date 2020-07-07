@@ -15,29 +15,25 @@ const Loaders: React.FC = () => {
     id: string;
   }
 
-  // const deleteItem = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-  // const deleteItem = ((e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined) => {
   const deleteItem = (e: any) => {
-    const i: number = store.loaders.findIndex(
-      (x: any) => x.id === e.target.id
-      // (x: { id: number }) => x.id === e.target.id
-      // (x: { id: number }, e: { target: { id: number } }) => x.id === e.target.id
-    );
+    const i: number = store.loaders.findIndex((x: any) => x.id === e.target.id);
     store.removeLoader(i);
   };
 
   return useObserver(() => (
     <div onClick={deleteItem}>
       {store.loaders.map((x: Loaders) => (
-        <Paper key={x.id}>
-          <ul className="table-unit">
-            <li>{x.name}</li>
-            <li>{x.time}</li>
-            <li id={x.id} className="delete-icon">
-              <DeleteIcon />
-            </li>
-          </ul>
-        </Paper>
+        <div className="unit" key={x.id}>
+          <Paper>
+            <ul className="table-unit">
+              <li>{x.name}</li>
+              <li>{x.time}</li>
+              <li id={x.id} className="delete-icon">
+                <DeleteIcon />
+              </li>
+            </ul>
+          </Paper>
+        </div>
       ))}
     </div>
   ));
