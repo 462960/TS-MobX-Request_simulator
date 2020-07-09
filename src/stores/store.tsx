@@ -8,8 +8,6 @@ type Props = {
 };
 
 interface Store {
-  // loaders: Array<object>;
-  // Interchangable in many cases
   loaders: object[];
   addLoader: (loader: object) => void;
   removeLoader: (i: number) => void;

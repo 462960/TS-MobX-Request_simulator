@@ -11,7 +11,11 @@ import AnimatedLoader from "./AnimatedLoader";
 
 import StartStop from "./StartStop";
 
-const Container: React.FC = () => {
+interface Props {
+  setOpenMessage: (x: boolean) => void;
+}
+
+const Container: React.FC<Props> = ({ setOpenMessage }) => {
   const store = useContext(StoreContext);
   const [currentName, setCurrentName] = useState<string>("");
   const [currentTime, setCurrentTime] = useState<number>(0);
@@ -56,7 +60,11 @@ const Container: React.FC = () => {
         <div className="loader-wrapper">
           <div className="table-container">
             <InputModule setLoadersQueue={setLoadersQueue} />
-            <Loaders blocked={blocked} setLoadersQueue={setLoadersQueue} />
+            <Loaders
+              blocked={blocked}
+              setLoadersQueue={setLoadersQueue}
+              setOpenMessage={setOpenMessage}
+            />
             <StartStop handleStart={handleStart} handleStop={handleStop} />
           </div>
           <div className="spinner-container">
