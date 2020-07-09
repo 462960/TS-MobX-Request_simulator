@@ -8,6 +8,7 @@ import Paper from "@material-ui/core/Paper";
 import InputModule from "./InputModule";
 import Loaders from "./Loaders";
 import AnimatedLoader from "./AnimatedLoader";
+
 import StartStop from "./StartStop";
 
 const Container: React.FC = () => {
@@ -17,18 +18,21 @@ const Container: React.FC = () => {
   const [grad, setGrad] = useState<number>(0);
   const [loadersQueue, setLoadersQueue] = useState<any>([]);
   const [timerID, setTimerID] = useState<any>(null);
+  // prevents delete loader while process is rnning
+  const [blocked, setBlocked] = useState<boolean>(false);
 
   useEffect(() => {
     if (currentTime === 0 && loadersQueue.length === 0) {
       clearInterval(timerID);
       setLoadersQueue([...store.loaders]);
+      setBlocked(false);
     }
     currentTime < 0 && loadersQueue.length > 0 && takeLoader();
   }, [currentTime, loadersQueue.length]);
 
   const handleStart = () => {
     currentTime === 0 && takeLoader();
-
+    setBlocked(true);
     const interval = setInterval(() => {
       setCurrentTime((x) => x - 1);
       setGrad((x) => x + 35);
@@ -52,7 +56,7 @@ const Container: React.FC = () => {
         <div className="loader-wrapper">
           <div className="table-container">
             <InputModule setLoadersQueue={setLoadersQueue} />
-            <Loaders />
+            <Loaders blocked={blocked} setLoadersQueue={setLoadersQueue} />
             <StartStop handleStart={handleStart} handleStop={handleStop} />
           </div>
           <div className="spinner-container">

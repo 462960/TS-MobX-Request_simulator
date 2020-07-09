@@ -57,6 +57,11 @@ li {
   }
 }
 
+// Prevents loader delete action
+.blocked {
+  pointer-events: none;
+}
+
 // Loader
 .animated-loader-wrap {
   width: 40px;
